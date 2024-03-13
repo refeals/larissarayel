@@ -7,7 +7,7 @@ import { useMediaQuery } from "../hooks/useMediaQuery"
 
 export const Cards = () => {
   return (
-    <section className="flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-6 p-8">
+    <section className="flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-4 lg:gap-6 py-8">
       <Card
         imgUrl={img1}
         title="Fisioterapia"
@@ -49,18 +49,22 @@ const Card = ({ title, text, imgUrl, delay }: CardProps) => {
       initial={{ opacity: 0, ...initial }}
       animate={{ opacity: 1, ...animate }}
       transition={{ duration: 0.2, repeat: 0, delay: 0.6 + delay }}
-      whileHover={{ scale: 1.05 }}
-      className="grid auto-rows-cards max-w-[320px] shadow-xl rounded-3xl"
+      className="flex"
     >
-      <img
-        src={imgUrl}
-        alt={title}
-        className="h-[240px] rounded-t-3xl w-full object-cover object-bottom"
-      />
-      <div className="px-8 py-6 flex flex-col gap-2 items-start">
-        <h3 className="text-primary font-bold text-lg">{title}</h3>
-        <p className="text-blackey font-medium">{text}</p>
-      </div>
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        className="grid auto-rows-cards mx-4 lg:mx-0 lg:max-w-[320px] shadow-xl rounded-3xl"
+      >
+        <img
+          src={imgUrl}
+          alt={title}
+          className="h-[240px] rounded-t-3xl w-full object-cover object-bottom"
+        />
+        <div className="px-4 py-4 lg:px-8 lg:py-6 flex flex-col gap-1 lg:gap-2 items-start">
+          <h3 className="text-primary font-bold text-lg">{title}</h3>
+          <p className="text-blackey font-medium text-base">{text}</p>
+        </div>
+      </motion.div>
     </motion.div>
   )
 }
